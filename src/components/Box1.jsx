@@ -75,7 +75,7 @@ const Box1 = ({
         <ul className="space-y-2 flex flex-col gap-3 w-[340px]">
           {filteredTasks.length === 0 ? (
             <li className="text-gray-600 text-sm px-3">
-              {todos.length === 0 ? "" : "No task in this filter"}
+              {todos.length === 0 ? "" : ""}
             </li>
           ) : (
             filteredTasks.map((todo) => (
@@ -118,7 +118,7 @@ const Box1 = ({
         </ul>
 
         {/* Footer */}
-        <div className="flex justify-between items-center w-[340px] mt-4">
+        <div className="flex justify-between justify-center gap-20 items-center w-[340px] mt-4">
           {todos.length === 0 ? (
             <p className="text-sm text-gray-700 font-bold">
               No tasks yet. Add one above!
@@ -126,16 +126,17 @@ const Box1 = ({
           ) : (
             <>
               <p className="text-sm text-gray-700 font-bold">
-                {completedCount} of {totalCount} tasks completed
+                {todos.filter((t) => t.completed).length} of {todos.length}{" "}
+                tasks completed
               </p>
-              {completedCount > 0 && (
-                <button
-                  onClick={clearCompleted}
-                  className="text-sm text-red-600 hover:underline"
-                >
-                  Clear Completed
-                </button>
-              )}
+
+              {/* Clear Completed button */}
+              <button
+                onClick={clearCompleted}
+                className="text-sm text-red-600 hover:underline"
+              >
+                Clear Completed
+              </button>
             </>
           )}
         </div>
