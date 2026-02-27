@@ -15,7 +15,7 @@ function Home() {
 
   const toggleCompleted = (id) => {
     setTodos(
-      todos.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
+      todos.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t)),
     );
   };
 
@@ -27,8 +27,8 @@ function Home() {
     activeBtn === 1
       ? todos
       : activeBtn === 2
-      ? todos.filter((t) => !t.completed)
-      : todos.filter((t) => t.completed);
+        ? todos.filter((t) => !t.completed)
+        : todos.filter((t) => t.completed);
 
   return (
     <div>
@@ -41,6 +41,8 @@ function Home() {
         filteredTasks={filteredTasks}
         toggleCompleted={toggleCompleted}
         deleteTodo={deleteTodo}
+        todos={todos}
+        setTodos={setTodos}
       />
     </div>
   );
